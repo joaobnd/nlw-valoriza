@@ -27,11 +27,22 @@ class AuthenticateUserService {
       throw new Error("credenciais inválidas");
     }
 
-    //const token = sign()
+    const token = sign(
+      {
+        email: user.email
+      },
+      "a0fee4b653acf65ee358468e31bffbd9",
+      {
+        subject: user.id,
+        expiresIn: "1d"
+      }
+    );
 
-
+    return token;
 
   }
+
+
 }
 
 export { AuthenticateUserService };
